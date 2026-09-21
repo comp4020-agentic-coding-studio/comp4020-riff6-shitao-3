@@ -7,6 +7,11 @@ affiliation: Slop University School of Invented Disciplines
 role: tutor
 email: idris.fenn@slop.university
 contact: Ask during a studio, or email when a question can't wait until the next one.
+photo: ./idris-fenn-photo.jpg
+photoAlt:
+  Album leaf from "Illustrations in the Spirit of Tao Yuanming's Poems" by
+  Shitao (石涛, 1642 – c. 1707), ink and colour on paper, used here in place of
+  a photograph.
 ---
 
 Idris runs the middle studios --- the ones where a working instrument from the
