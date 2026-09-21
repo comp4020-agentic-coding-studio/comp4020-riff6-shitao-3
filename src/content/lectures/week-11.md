@@ -6,6 +6,7 @@ week: 11
 date: 2027-05-03
 teachers:
   - idris-fenn
+slides: /decks/week-11/
 related:
   - sessions/11-staging-the-work
 ---

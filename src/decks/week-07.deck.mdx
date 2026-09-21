@@ -1,0 +1,67 @@
+---
+title: One path for every hand
+description: Week 7 lecture deck for Instruments for Mark-Making — unifying input instead of branching on it
+---
+
+# Instruments for Mark-Making
+
+Week 7 --- One path for every hand
+
+---
+
+## The tempting way to add a second device
+
+```
+if (isTouch) {
+  ...touch logic...
+} else {
+  ...mouse logic...
+}
+```
+
+It works. Briefly.
+
+---
+
+{/* _class: impact */}
+
+# Then every later feature gets built twice
+
+The constraint from week 4. The decay from week 5. Kept in sync, twice, by
+hand, forever.
+
+---
+
+## The alternative
+
+One internal event, produced identically by every input source. The rest of
+the instrument never has to know where it came from.
+
+- a keyboard user isn't a special case you remembered to handle
+- a touchscreen user isn't either
+- they're just two more ways of producing the one thing the instrument
+  listens for
+
+---
+
+## Accessibility stops being a checklist
+
+An instrument built around one shared event, rather than one device's raw
+API, tends to already work for a keyboard-only user --- because the keyboard
+was never a bolted-on afterthought to begin with.
+
+---
+
+## What this cashes in from week 3
+
+Some expressive qualities don't need an event at all once every device
+funnels into the same one: a live count, how long a shared map has sat
+non-empty, what's actually in it. Readable directly, no per-device reasoning
+left to do.
+
+---
+
+## Before studio 7
+
+Bring your instrument built for whichever device you happened to prototype
+on. Today it has to answer to a second one, through the same path.
