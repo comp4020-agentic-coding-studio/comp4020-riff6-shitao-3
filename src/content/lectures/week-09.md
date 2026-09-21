@@ -7,6 +7,7 @@ week: 9
 date: 2027-04-19
 teachers:
   - idris-fenn
+slides: /decks/week-09/
 related:
   - sessions/09-failure-as-material
 ---
@@ -31,3 +32,12 @@ for something you didn't get around to fixing.
 - generative art's own history of kept, not fixed, malfunctions
 - the one-sentence test for "deliberate" versus "still a bug"
 - why this lecture comes after six weeks of real debugging, not before it
+
+## Look at
+
+Reed Ghazala, who coined "circuit bending" after a toy synthesiser
+short-circuited into a sound nobody had designed, is the clearest real-world
+version of this week's test: the discovery was an accident, but every bent
+circuit he built and sold afterwards was a deliberate, repeatable choice
+about which accidents were worth keeping. That's the distance between
+finding a failure and defending one.

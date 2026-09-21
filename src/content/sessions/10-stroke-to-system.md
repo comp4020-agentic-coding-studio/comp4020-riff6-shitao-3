@@ -35,3 +35,9 @@ legible to someone who only ever sees one run of it.
 Name, in one sentence, the thing that doesn't change across your outputs.
 That sentence is the closest thing this course gets to a thesis statement for
 your work.
+
+## Stretch goal
+
+Run it a fourth time with a setting nobody in the room tried, and check the
+sentence still holds. A thesis that survives three demonstrations you chose
+is weaker evidence than one that survives a fourth you didn't plan.

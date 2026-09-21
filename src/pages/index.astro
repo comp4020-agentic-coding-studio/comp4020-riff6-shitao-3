@@ -42,6 +42,39 @@ import { sessionLabels, siteConfig } from "../site-config";
     someone else's fingers are on it.
   </p>
 
+  <h2>Learning outcomes</h2>
+  <p>On completing this course, you will be able to:</p>
+  <ol>
+    <li>
+      read a pointer, touch or key stream as more than a raw position, and
+      derive a signal — velocity, dwell, shared state — that survives a
+      change of input device;
+    </li>
+    <li>
+      choose and hold a single deliberate constraint in an interactive
+      system, and demonstrate what removing it changes;
+    </li>
+    <li>
+      build an instrument whose state keeps moving on its own over time, and
+      diagnose the specific failure mode that produces when input and decay
+      write to the same value;
+    </li>
+    <li>
+      unify multiple input devices behind one internal event, rather than a
+      device-by-device branch, and explain why that also yields keyboard
+      access as a consequence;
+    </li>
+    <li>
+      distinguish a deliberately chosen failure from a bug by stating, in one
+      sentence, what a viewer is meant to feel when it happens; and
+    </li>
+    <li>
+      stage a finished instrument to run unattended for a stranger, with no
+      spoken explanation, and defend in a crit what the resulting piece is
+      for.
+    </li>
+  </ol>
+
   <h2>Where to go next</h2>
   <CardGrid columns={2}>
     <Card title={sessionLabels.plural} href="/sessions/">

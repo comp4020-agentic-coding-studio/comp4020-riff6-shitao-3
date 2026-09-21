@@ -37,3 +37,10 @@ touching anything else. Ask which one they'd pick to show, and why. If they
 can't tell the seeds apart, the variation isn't visible yet; if none of them
 feels like a choice worth making, the seed reached everywhere it needed to but
 the marks don't diverge in any way a hand would care about.
+
+## Stretch goal
+
+Instead of jumping between seeds, let a hand interpolate continuously between
+two of them. Two runs at either end should still reproduce exactly; everything
+in between is the actual test of whether your seed reaches the parts of the
+instrument that make a visible difference, or just the parts that don't.

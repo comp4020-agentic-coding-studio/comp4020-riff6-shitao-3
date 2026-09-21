@@ -34,3 +34,10 @@ pressure ever will.
 You should be able to point at a specific line of code and say "this is the
 number that makes a fast stroke look different from a slow one," rather than
 gesturing at the instrument as a whole.
+
+## Stretch goal
+
+Wire in a second derived signal --- dwell time alongside velocity, say --- and
+check the mark is still readable at a glance with both changing it at once.
+Two signals that fight for the same visual property usually mean one of them
+needs a different property to control, not a bigger effect.

@@ -7,6 +7,7 @@ week: 3
 date: 2027-03-08
 teachers:
   - idris-fenn
+slides: /decks/week-03/
 related:
   - sessions/03-gesture-as-data
 ---
@@ -31,3 +32,14 @@ across every input path for the same reason.
 - why `pressure` is the wrong first reach, device by device
 - computing velocity and dwell time from your own event stream instead
 - state-based signals as a further step past timing signals, for later weeks
+
+## Look at
+
+Ben Shneiderman's direct-manipulation principles --- continuous
+representation, physical actions instead of typed syntax, immediately
+visible results --- were written for pointing devices decades before touch
+and stylus existed, and they hold up precisely because they're about timing
+and feedback, not about any one piece of hardware. Golan Levin's writing on
+software for artists is a useful second stop, if you want to see the same
+argument made from the artist's side of the keyboard rather than the
+platform designer's.

@@ -45,3 +45,11 @@ to you and watch what they do with it that you didn't expect.
 Keep the build. Next week's studio starts by showing it to the room, and the
 one thing you're least sure about is more useful to bring than the thing
 that's working.
+
+## Stretch goal
+
+If the line-that-follows-the-pointer feels finished early, resist adding a
+second feature. Instead watch one hand use it for a full minute and write
+down the single moment where it did something you didn't expect --- that
+observation is worth more going into week 2 than a build with two features
+neither of you has tested.

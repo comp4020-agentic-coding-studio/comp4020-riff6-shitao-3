@@ -35,3 +35,10 @@ is graded yet.
 
 Take one piece of feedback and act on it before the next studio, even if it's
 small. The habit that matters is closing the loop, not accumulating notes.
+
+## Stretch goal
+
+Give feedback to a second person in the room, not just the one you're paired
+with, and aim it at their least-certain decision rather than the thing that
+already looks polished. Naming someone else's uncertain decision correctly
+is good practice for reading your own build the same way.

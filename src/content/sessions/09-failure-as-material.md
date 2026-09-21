@@ -35,3 +35,10 @@ that, it's still a bug --- fix it instead.
 Show the chosen failure to someone without telling them it's deliberate first.
 If they report it to you as a bug, your defence from the studio needs another
 pass before the exhibition.
+
+## Stretch goal
+
+Write the two-sentence defence down as a comment in the code, right next to
+where the failure happens, rather than keeping it in your head. By week 12
+you will have forgotten your own reasoning at least once already this
+semester; don't let this be the failure that costs you.

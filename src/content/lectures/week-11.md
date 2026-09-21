@@ -30,3 +30,11 @@ author expects.
 - unattended operation as its own test, distinct from "it works when I demo it"
 - failure modes that only surface after minutes of no input, not seconds
 - staging: what a viewer needs to be told, and how to make that as little as possible
+
+## Look at
+
+Nina Simon's *The Participatory Museum* is written for exhibit designers
+staging interactives for visitors who arrive with no docent and no
+instruction sheet, which is the exact problem this lecture is about --- her
+running theme, that the best label is the one a visitor never has to read,
+is a good test to hold your own instrument to next week.

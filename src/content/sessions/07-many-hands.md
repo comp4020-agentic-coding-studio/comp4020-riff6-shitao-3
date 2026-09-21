@@ -35,3 +35,11 @@ against the shared signal underneath it.
 
 Get someone in the room to drive your instrument with the device you didn't
 build it for first. Watch, don't help.
+
+## Stretch goal
+
+If a third input device is available --- a pen, a second person's phone ---
+route it through the same shared function and time how long that takes. If
+adding the third device is faster than adding the second one was, the
+unification actually worked; if it isn't, there's still a hidden branch
+somewhere.

@@ -33,3 +33,12 @@ screenshot and trusting it.
 - from pure reaction to a system with its own clock
 - ink, charge, and other decay metaphors as the same mechanism
 - the specific failure mode where decay and input fight over one value
+
+## Look at
+
+Casey Reas's *Process* series is built on exactly this idea taken further: a
+short set of rules, set running, left to develop its own state over minutes
+rather than being redrawn on every input. Sol LeWitt's wall drawings make the
+same point from the opposite direction --- an instruction set that keeps
+producing a result after the person who wrote it has left the room, which is
+close to what your decay term is doing at a much smaller scale.

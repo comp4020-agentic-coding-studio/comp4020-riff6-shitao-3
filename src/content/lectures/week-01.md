@@ -31,3 +31,12 @@ hand is now involved. Everything this course marks is instruments.
 - the shape every studio and crit will follow for the rest of the semester
 - what to have running before next week: nothing more than a canvas and a line
   that follows the pointer
+
+## Look at
+
+Harold Cohen's AARON is worth arguing with here, not just admiring: a
+program that painted for over three decades, and a genuine counterexample to
+this course's own thesis, since Cohen built it as an artwork with a fixed
+style rather than an instrument a different hand could play. Deciding where
+your own build sits on that line is a useful first exercise before you've
+written a line of code.

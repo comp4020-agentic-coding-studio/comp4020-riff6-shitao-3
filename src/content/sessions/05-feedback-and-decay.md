@@ -35,3 +35,11 @@ number.
 Leave the instrument alone for thirty seconds without touching it and watch
 what it does. If nothing happens, the decay isn't wired to anything visible
 yet.
+
+## Stretch goal
+
+Make the decay rate itself respond to another signal --- ink that dries
+faster after a fast stroke, say --- instead of ticking down at a constant
+rate. It's the same fight-over-one-value risk from this week's lecture, one
+level up, and worth meeting now rather than discovering it by accident in
+week 7.

@@ -38,3 +38,12 @@ directly, with no per-device reasoning left to do.
 - designing one internal event that every input source produces
 - why this makes keyboard support a consequence, not a separate task
 - reading expressive signals off shared state instead of any single event
+
+## Look at
+
+The curb-cut effect is the same argument in a completely different medium: a
+kerb cut poured for wheelchair users turns out to help parents with prams,
+travellers with luggage and anyone on a bike, because it removed a
+device-specific assumption from the pavement rather than adding a
+device-specific ramp beside it. One shared internal event does the same job
+to your instrument's input handling.

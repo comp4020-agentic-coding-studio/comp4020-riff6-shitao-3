@@ -34,3 +34,10 @@ down. Fix what you find; that's the whole studio.
 Write the one sentence of instruction a viewer actually needs, if any, and put
 it where they'll see it before they touch anything. Everything else you'd
 normally say out loud has to be either obvious from using the thing, or cut.
+
+## Stretch goal
+
+If you can find someone who hasn't seen the course's other instruments ---
+not a classmate, someone unconnected to any of it --- let them try yours
+unattended before week 12. A stranger to the whole course is a stricter test
+than a stranger to just your build.

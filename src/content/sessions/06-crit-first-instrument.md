@@ -35,3 +35,10 @@ was shown here and what's in the repository, not against a later polish pass.
 Whatever the room found in the first thirty seconds of silent handling is the
 most useful single fact you'll get about the build all semester. Write it down
 before the next studio's constraint replaces it in your head.
+
+## Stretch goal
+
+If you can borrow a phone or tablet before the crit, hand your instrument to
+it even if you built for a mouse. It's an early, informal version of the
+many-hands test week 7 formalises, and it's a much better place to discover a
+touch-only failure than the crit itself.

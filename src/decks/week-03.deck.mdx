@@ -1,0 +1,61 @@
+---
+title: Gesture has more than a position
+description: Week 3 lecture deck for Instruments for Mark-Making — timing signals over hardware signals
+---
+
+# Instruments for Mark-Making
+
+Week 3 --- Gesture has more than a position
+
+---
+
+## `PointerEvent.pressure` looks like the answer
+
+- it's a number, right there on the event
+- feels like the obvious way to make a mark expressive
+
+---
+
+{/* _class: impact */}
+
+# It's also unreliable
+
+A mouse reports a constant 0.5. Most touchscreens report 0 without a stylus
+that supports force. A keyboard has no pressure at all.
+
+Reach for it and you've deepened one input path --- and broken the course's
+own rule that every instrument answers to more than one hand.
+
+---
+
+## What survives across devices instead
+
+- how long since the last event
+- how far the position moved in that interval
+- computed from the event stream you already have, identically, on every
+  device
+
+---
+
+{/* _class: quote */}
+
+> Master the stroke and method follows.
+
+Read against this week's problem: the stroke a course can teach is the one
+every hand can make. Timing survives across devices for the same reason ---
+it's computed, not read off hardware that varies.
+
+---
+
+## One step further, for later weeks
+
+Some expressive qualities aren't tied to a single event at all --- they're
+shared state a map or a counter already tracks, which is free across every
+input path for the same reason timing is.
+
+---
+
+## Before studio 3
+
+Bring last week's build. You're cutting it open, not starting again: wire in
+one derived signal, and one thing the mark does because of it.

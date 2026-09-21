@@ -38,3 +38,10 @@ mark-making is for.
 [Exhibition Piece](/assessments/exhibition-piece/) is marked against what ran
 in this room, and [Critique Practice](/assessments/critique-practice/) is
 marked against how you used every studio before it, this one included.
+
+## Stretch goal
+
+Go back and read week 1's "instrument, not artwork" line again, now that the
+semester is over. Write down whether your one-sentence thesis from the studio
+still agrees with it, or has quietly moved --- either answer is fine, but
+knowing which one happened is the point of asking.

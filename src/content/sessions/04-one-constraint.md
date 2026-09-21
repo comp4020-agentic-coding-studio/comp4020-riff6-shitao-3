@@ -31,3 +31,10 @@ difference in the same two minutes.
 
 Keep the toggle even after the studio. It's the fastest way to answer "why
 does this rule matter" for the rest of the semester, including to yourself.
+
+## Stretch goal
+
+Try holding a second, incompatible constraint alongside the first for five
+minutes, purely as a throwaway branch you'll delete. It's the fastest way to
+feel why one well-chosen constraint beats two half-held ones, rather than
+just being told so.
