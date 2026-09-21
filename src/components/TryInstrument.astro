@@ -1,0 +1,246 @@
+---
+// The one page on this site where a hand actually touches an instrument,
+// instead of reading a description of one. Speed --- computed the same way
+// for a pointer drag, a touch drag, and repeated arrow-key presses --- is
+// the one deliberate constraint: a slow, held stroke pools wide and dark; a
+// fast one scratches thin and pale. Every mark drifts away on its own after
+// a couple of seconds, whether or not anyone is still watching it.
+---
+
+<section class="try-instrument" aria-labelledby="try-instrument-heading">
+  <h2 id="try-instrument-heading">Try it</h2>
+  <p>
+    Drag with a pointer or a touch, or focus the surface and use the arrow
+    keys. Slow down and it pools; move fast and it scratches thin. Let go and
+    watch the mark drift away on its own — nobody has to clear it for you.
+  </p>
+  <div class="try-instrument-frame">
+    <canvas
+      id="try-instrument-canvas"
+      tabindex="0"
+      role="img"
+      aria-label="A drawing surface. Drag with a pointer or touch, or use the arrow keys once this is focused, to make a mark that fades away on its own after a couple of seconds."
+    ></canvas>
+  </div>
+  <div class="try-instrument-controls">
+    <button type="button" id="try-instrument-clear">Clear</button>
+  </div>
+  <noscript>
+    <p>This small instrument needs JavaScript to run.</p>
+  </noscript>
+</section>
+
+<style>
+  .try-instrument {
+    margin-block: 2.5rem;
+    padding: var(--at-spacing-lg);
+    border: 1px solid var(--at-border);
+    border-radius: var(--at-border-radius);
+    background: var(--at-bg-alt);
+  }
+
+  .try-instrument h2 {
+    margin-block-start: 0;
+  }
+
+  .try-instrument-frame {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    max-height: 22rem;
+    border: 1px solid var(--at-border);
+    border-radius: var(--at-border-radius);
+    overflow: hidden;
+    background: var(--at-bg);
+  }
+
+  .try-instrument-frame canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    touch-action: none;
+    cursor: crosshair;
+  }
+
+  .try-instrument-frame canvas:focus-visible {
+    outline: 2px solid var(--at-primary);
+    outline-offset: -2px;
+  }
+
+  .try-instrument-controls {
+    margin-block-start: 0.75rem;
+  }
+
+  .try-instrument-controls button {
+    font: inherit;
+    padding: 0.4rem 0.9rem;
+    border: 1px solid var(--at-border);
+    border-radius: var(--at-border-radius);
+    background: var(--at-bg);
+    color: var(--at-text);
+    cursor: pointer;
+  }
+
+  .try-instrument-controls button:hover {
+    background: var(--at-bg-elevated);
+  }
+
+  .try-instrument-color-probe {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+  }
+</style>
+
+<script>
+  const section = document.querySelector(".try-instrument");
+  if (section) {
+    const canvas = section.querySelector<HTMLCanvasElement>("#try-instrument-canvas")!;
+    const frame = canvas.parentElement!;
+    const clearButton = section.querySelector<HTMLButtonElement>("#try-instrument-clear")!;
+    const ctx = canvas.getContext("2d")!;
+
+    const DECAY_MS = 1400;
+    const KEY_STEP = 22; // CSS px per arrow-key nudge
+    const MIN_RADIUS = 3;
+    const MAX_RADIUS = 16;
+    const SPEED_FOR_MIN_RADIUS = 2.2; // CSS px per ms
+
+    type Dab = { x: number; y: number; born: number; speed: number };
+    let dabs: Dab[] = [];
+    let cursor = { x: 0, y: 0 };
+    let lastPointer: { x: number; y: number; t: number } | null = null;
+    let lastKeyTime = 0;
+
+    // Colours resolve through actual elements so they follow the site's own
+    // brand tokens and light/dark mode, rather than duplicating the palette.
+    const strokeProbe = document.createElement("span");
+    strokeProbe.className = "try-instrument-color-probe";
+    strokeProbe.style.color = "var(--at-primary)";
+    const bgProbe = document.createElement("span");
+    bgProbe.className = "try-instrument-color-probe";
+    bgProbe.style.color = "var(--at-bg)";
+    section.append(strokeProbe, bgProbe);
+
+    let strokeRGB = "15, 118, 110";
+    let bgCSS = "#fff";
+
+    function parseRGB(computed: string): string {
+      const match = computed.match(/(\d+),\s*(\d+),\s*(\d+)/);
+      return match ? `${match[1]}, ${match[2]}, ${match[3]}` : "15, 118, 110";
+    }
+
+    function readColors() {
+      strokeRGB = parseRGB(getComputedStyle(strokeProbe).color);
+      bgCSS = getComputedStyle(bgProbe).color;
+    }
+
+    // Measuring from the frame (not the canvas's own attributes) avoids a
+    // resize feedback loop this course's own template has hit before.
+    function resize() {
+      const rect = frame.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = Math.max(1, Math.round(rect.width * dpr));
+      canvas.height = Math.max(1, Math.round(rect.height * dpr));
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      if (cursor.x === 0 && cursor.y === 0) {
+        cursor = { x: rect.width / 2, y: rect.height / 2 };
+      }
+    }
+
+    function addDab(x: number, y: number, speed: number) {
+      dabs.push({ x, y, born: performance.now(), speed });
+    }
+
+    function radiusForSpeed(speed: number) {
+      const t = Math.min(1, speed / SPEED_FOR_MIN_RADIUS);
+      return MAX_RADIUS - t * (MAX_RADIUS - MIN_RADIUS);
+    }
+
+    function frameLoop() {
+      const now = performance.now();
+      dabs = dabs.filter((d) => now - d.born < DECAY_MS);
+
+      const rect = frame.getBoundingClientRect();
+      ctx.fillStyle = bgCSS;
+      ctx.fillRect(0, 0, rect.width, rect.height);
+
+      for (const dab of dabs) {
+        const age = now - dab.born;
+        const alpha = 1 - age / DECAY_MS;
+        ctx.beginPath();
+        ctx.fillStyle = `rgba(${strokeRGB}, ${(alpha * 0.85).toFixed(3)})`;
+        ctx.arc(dab.x, dab.y, radiusForSpeed(dab.speed), 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      requestAnimationFrame(frameLoop);
+    }
+
+    function pointerPos(event: PointerEvent) {
+      const rect = frame.getBoundingClientRect();
+      return { x: event.clientX - rect.left, y: event.clientY - rect.top };
+    }
+
+    canvas.addEventListener("pointerdown", (event) => {
+      canvas.setPointerCapture(event.pointerId);
+      const pos = pointerPos(event);
+      lastPointer = { ...pos, t: performance.now() };
+      addDab(pos.x, pos.y, 0);
+    });
+
+    canvas.addEventListener("pointermove", (event) => {
+      if (!lastPointer || event.buttons === 0) return;
+      const pos = pointerPos(event);
+      const now = performance.now();
+      const dt = Math.max(1, now - lastPointer.t);
+      const dist = Math.hypot(pos.x - lastPointer.x, pos.y - lastPointer.y);
+      const speed = dist / dt;
+      addDab(pos.x, pos.y, speed);
+      lastPointer = { ...pos, t: now };
+    });
+
+    canvas.addEventListener("pointerup", () => {
+      lastPointer = null;
+    });
+    canvas.addEventListener("pointercancel", () => {
+      lastPointer = null;
+    });
+
+    const ARROW_DELTAS: Record<string, [number, number]> = {
+      ArrowUp: [0, -1],
+      ArrowDown: [0, 1],
+      ArrowLeft: [-1, 0],
+      ArrowRight: [1, 0],
+    };
+
+    canvas.addEventListener("keydown", (event) => {
+      const delta = ARROW_DELTAS[event.key];
+      if (!delta) return;
+      event.preventDefault();
+      const rect = frame.getBoundingClientRect();
+      const now = performance.now();
+      // Same speed = distance / time formula as the pointer path, so a
+      // keyboard's only real signal (how fast keys repeat) drives the same
+      // constraint rather than a separate, weaker keyboard-only rule.
+      const dt = lastKeyTime ? Math.max(1, now - lastKeyTime) : 1000;
+      lastKeyTime = now;
+      cursor = {
+        x: Math.min(rect.width, Math.max(0, cursor.x + delta[0] * KEY_STEP)),
+        y: Math.min(rect.height, Math.max(0, cursor.y + delta[1] * KEY_STEP)),
+      };
+      const speed = KEY_STEP / dt;
+      addDab(cursor.x, cursor.y, speed);
+    });
+
+    clearButton.addEventListener("click", () => {
+      dabs = [];
+    });
+
+    readColors();
+    resize();
+    window.addEventListener("resize", resize);
+    matchMedia("(prefers-color-scheme: dark)").addEventListener("change", readColors);
+    requestAnimationFrame(frameLoop);
+  }
+</script>
